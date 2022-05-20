@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MoviesCatalogModels.ViewModels.MovieVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Movies</h1>
+
+<p>
+    @Html.ActionLink("Create new movie", "NewMovie", "Movie")
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditMovie", "Movie") |
+                @Html.ActionLink("Details" ,"Details","Movie" , new {id = item.Id} ) |
+                @Html.ActionLink("Delete", "DeleteMovie","Movie", new {id = item.Id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
